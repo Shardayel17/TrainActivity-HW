@@ -1,71 +1,89 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-<head>
-<meta charset="UTF-8">
-<title>Train Homework</title>
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-<script
-src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Train Homework</title>
+
+  <!-- Bootstrap --><script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <link rel="stylesheet" type="reset/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="Javascript/train.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
-<div class="jumbotron">
-  <h1>Anytime Is Train Time </h1>
-</div>
-<div class="conatiner">
-<div class="row">
-<div class="col-lg-10 mx-auto">
-<form>
-  <div class="form-group">
-    <label for="Employee Name">Train Name</label>
-    <input type="text" class="form-control" id="Name" aria-describedby="name" placeholder="Train">
-  </div>
-  <div class="form-group">
-    <label for="Role">Destination</label>
-    <input type="text" class="form-control" id="Role" placeholder="Your Destination">
-  </div>
-  <div class="form-group">
-    <label for="Role">Frequency</label>
-    <input type="text" class="form-control" id="startDate" placeholder="How frequently does this train leave">
-  </div>
-  <div class="form-group">
-    <label for="Rate">Next Arrival</label>
-    <input type="text" class="form-control" id="Rate" placeholder="What time does this train come next">
-  </div>
-  <div class="form-group">
-    <label for="Rate">Minutes Away</label>
-    <input type="text" class="form-control" id="Rate" placeholder="How long until this train arrives">
-  </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Anytime Is Train Time </h1>
+    </div>
 
-<div class="row">
-       <div class="table-responsive">
-               <table  class= "table table-hover" style="width:100%" id="employeeData">
-                <tr>
-                   <th>Train Name</th>
-                   <th>Destination</th>
-                   <th>Frequency</th>
-                   <th>Next Arrival</th>
-                   <th>Minutes Away</th>
-                </tr>
-             </table>
-            </div>
-</div>
-</div>
-</div>
+    <div class="row">
+      <div class="col-md-12">
 
-</body>
+        <div class="card mb-4 p-4">
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="Train-Name">Train Name</label>
+                <input type="text" class="form-control" id="Name" aria-describedby="name" placeholder="Train">
+              </div>
+              <div class="form-group">
+                <label for="Destination">Destination</label>
+                <input type="text" class="form-control" id="Destination" placeholder="Your Destination">
+              </div>
+              <div class="form-group">
+                <label for="Frequency">Frequency</label>
+                <input type="text" class="form-control" id="Frequency" placeholder="How frequently does this train leave">
+              </div>
+              <div class="form-group">
+                <label for="Arrival">Next Arrival</label>
+                <input type="text" class="form-control" id="Arrival" placeholder="What time does this train come next">
+              </div>
+              <div class="form-group row">
+                <label for="Minutes">Minutes Away</label>
+                <input type="text" class="form-control" id="Minutes" placeholder="How long until this train arrives">
+              </div>
+
+              <button type="submit"   id="submit" class="btn btn-primary">Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+      <div class="col-mb-4">
+        <div class="card-body">
+
+
+          <table class="table table-sm table-hover"  id="TrainData">
+            <thead>
+              <tr>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Next Arrival</th>
+                <th scope="col">Minutes Away</th>
+              </tr>
+            </thead>
+            <tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="train.js"></script>
 </body>
 
 </html>
