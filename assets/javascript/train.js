@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 
 
 var config = {
@@ -16,7 +18,7 @@ var database = firebase.database();
 $("#submit").on("click", function (event) {
   event.preventDefault();
 
-  var TNAME = $("#Train-Name").val().trim();
+  var TNAME = $("#Name").val().trim();
   var TDES = $("#Destination").val().trim();
   var TFRE = $("#Frequency").val().trim();
   var TTIME = $("#Arrival").val().trim();
@@ -43,40 +45,42 @@ $("#submit").on("click", function (event) {
 });
 
 
-  database.ref().on("child_added", function (childSnapshot, prevChildKey) {
-    console.log(childSnapshot.val());
+database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+  console.log(childSnapshot.val());
 
-    var TNAME = childSnapshot.val().name;
-    var TDES = childSnapshot.val().destination;
-    var TFRE = childSnapshot.val().frequency
-    var TTIME = childSnapshot.val().TRAINTIME;
-
-
-    var TRNARR = TRAINTIME.split(":");
-    var TRAINTIME = moment().hours(TRNARR[0]).minutes(TRNARR[1]);
+  var TNAME = childSnapshot.val().name;
+  var TDES = childSnapshot.val().destination;
+  var TFRE = childSnapshot.val().frequency
+  var TTIME = childSnapshot.val().TRAINTIME;
 
 
-    var CURRENTTRAIN = moment();
-    console.log("CURRENT TIME: " + moment(CURRENTTRAIN).format("hh:mm"));
+  var TRNARR = TRAINTIME.split(":");
+  var TRAINTIME = moment().hours(TRNARR[0]).minutes(TRNARR[1]);
 
 
-    var MINUTES2GO = moment().diff(moment(TRAINTIME), "minutes");
-    console.log("DIFFERENCE IN TIME: " + MINUTES2GO);
+  var CURRENTTRAIN = moment();
+  console.log("CURRENT TIME: " + moment(CURRENTTRAIN).format("hh:mm"));
 
 
-    var TRMDR = MINUTES2GO % frequency;
-    console.log(TRMDR);
+  var MINUTES2GO = moment().diff(moment(TRAINTIME), "minutes");
+  console.log("DIFFERENCE IN TIME: " + MINUTES2GO);
 
 
-    var TMIN = frequency - TRMDR;
-    console.log("Train arrives in: " + TMIN);
-
-    var TXTRN = moment().add(TMIN, "m").format("hh:mm");
-    console.log("TRAIN ARRIVAL TIME: " + moment(TXTRN).format("hh:mm"));
+  var TRMDR = MINUTES2GO % frequency;
+  console.log(TRMDR);
 
 
-    var newRow = $("<tr>").append(TNAME);
+  var TMIN = frequency - TRMDR;
+  console.log("Train arrives in: " + TMIN);
+
+  var TXTRN = moment().add(TMIN, "m").format("hh:mm");
+  console.log("TRAIN ARRIVAL TIME: " + moment(TXTRN).format("hh:mm"));
 
 
-    $("tbody").append(newRow);
-}});
+  var newRow = $("<tr>").append(TNAME);
+
+
+  $("tbody").append(newRow);
+
+})
+});
